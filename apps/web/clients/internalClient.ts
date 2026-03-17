@@ -5,6 +5,15 @@ import jwt from 'jsonwebtoken';
 
 const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id"> | undefined | null> => {
   // ToDo: Implement the registerUser function
+  try {
+    await axios.post('http://localhost:3001/register', {
+      "email": input.email,
+      "password": input.password
+    });
+    alert("Registration was successful!");
+  } catch (error) {
+    console.error(error);
+  }
   return null
 };
 
